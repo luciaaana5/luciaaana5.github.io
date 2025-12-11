@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reemplazo de Palabras</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -19,6 +20,15 @@
       gap: 20px;
       margin-bottom: 20px;
     }
+
+    .botonera {
+      display: flex;
+      justify-content: flex-end; /* Los manda a la derecha */
+      gap: 10px; /* Espacio entre ellos (ajustalo como quieras) */
+      margin-bottom: 20px;
+    
+    }
+
     textarea {
       width: 100%;
       height: 180px;
@@ -33,19 +43,47 @@
       background: #fff;
     }
     button {
-      display: block;
-      margin: 0 auto 20px;
       padding: 10px 20px;
       font-size: 16px;
       border: none;
       border-radius: 6px;
-      background: #4a90e2;
+      background: #da25a3;
       color: #fff;
       cursor: pointer;
     }
     button:hover {
-      background: #357ac8;
+      background: #9e35c8;
     }
+      .tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .tooltip .tooltip-text {
+    visibility: hidden;
+    width: 140px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 6px;
+    border-radius: 6px;
+
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; 
+    left: 50%;
+    transform: translateX(-50%);
+
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+
   </style>
 </head>
 <body>
@@ -53,15 +91,23 @@
 
   <div class="container">
     <textarea id="textoOriginal" placeholder="Texto original..."></textarea>
-    <textarea id="buscar" placeholder="Palabras a buscar (una por línea)"></textarea>
-    <textarea id="reemplazar" placeholder="Palabras reemplazo (una por línea)"></textarea>
   </div>
-
-<button onclick="limpiarCampos()">Limpiar campos</button>
-<button onclick="procesar()">Reemplazar</button>  
-<button onclick="copiarResultado()">Copiar resultado</button>
-
+  
+  <div class="botonera"> 
+    <button  title="Borra el texto que aparece en Texto original" onclick="limpiarCampos()">Limpiar campos</button>
+  </div>
+ 
+<div class="container">
+  <textarea id="buscar" placeholder="Palabras a buscar (una por línea)"></textarea>
+  <textarea id="reemplazar" placeholder="Palabras reemplazo (una por línea)"></textarea>
+  </div>
+ 
   <textarea id="resultado" placeholder="Resultado..." readonly></textarea>
+  
+  <div class="botonera">
+    <button onclick="procesar()">Reemplazar</button>
+    <button onclick="copiarResultado()">Copiar resultado</button>
+  </div>
 
   <script>
     function procesar() {
@@ -83,7 +129,8 @@
       document.getElementById('resultado').value = resultado;
     }
       function limpiarCampos() {
-        document.getElementById('textoOriginal').value = '';
+      document.getElementById('textoOriginal').value = '';
+      document.getElementById('resultado').value = '';
     }
 
     function copiarResultado() {
