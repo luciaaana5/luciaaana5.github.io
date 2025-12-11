@@ -57,11 +57,9 @@
     <textarea id="reemplazar" placeholder="Palabras reemplazo (una por línea)"></textarea>
   </div>
 
-  <button onclick="procesar()">Reemplazar</button>
-
-  <button onclick="limpiarCampos()">Limpiar campos</button>
-
-  <button onclick="copiarResultado()">Copiar resultado</button>
+<button onclick="limpiarCampos()">Limpiar campos</button>
+<button onclick="procesar()">Reemplazar</button>  
+<button onclick="copiarResultado()">Copiar resultado</button>
 
   <textarea id="resultado" placeholder="Resultado..." readonly></textarea>
 
