@@ -83,10 +83,7 @@
       document.getElementById('resultado').value = resultado;
     }
       function limpiarCampos() {
-      document.getElementById('textoOriginal').value = '';
-      document.getElementById('buscar').value = '';
-      document.getElementById('reemplazar').value = '';
-      document.getElementById('resultado').value = '';
+        document.getElementById('textoOriginal').value = '';
     }
 
     function copiarResultado() {
