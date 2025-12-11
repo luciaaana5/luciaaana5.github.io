@@ -94,18 +94,21 @@
   </div>
   
   <div class="botonera"> 
-    <button  title="Borra el texto que aparece en Texto original" onclick="limpiarCampos()">Limpiar campos</button>
+    <button  title="Borra el texto que aparece en Texto original" onclick="limpiarCampos()">Limpiar campo</button>
   </div>
  
-<div class="container">
+  <div class="container">
   <textarea id="buscar" placeholder="Palabras a buscar (una por línea)"></textarea>
   <textarea id="reemplazar" placeholder="Palabras reemplazo (una por línea)"></textarea>
   </div>
- 
-  <textarea id="resultado" placeholder="Resultado..." readonly></textarea>
   
   <div class="botonera">
     <button onclick="procesar()">Reemplazar</button>
+  </div>
+
+  <textarea id="resultado" placeholder="Resultado..." readonly></textarea>
+  
+  <div class="botonera">
     <button onclick="copiarResultado()">Copiar resultado</button>
   </div>
 
@@ -121,7 +124,7 @@
         const palabraBuscar = buscar[i].trim();
         const palabraReemplazo = reemplazar[i] ? reemplazar[i].trim() : '';
         if (palabraBuscar) {
-          const regex = new RegExp(palabraBuscar.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+          const regex = new RegExp(palabraBuscar.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
           resultado = resultado.replace(regex, palabraReemplazo);
         }
       }
